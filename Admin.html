@@ -306,14 +306,14 @@
         .modal-content {
             background-color: var(--card-bg);
             margin: 5% auto;
-            padding: 0; /* Changed padding */
-            border: none; /* Changed border */
+            padding: 0;
+            border: none;
             width: 90%;
-            max-width: 700px; /* Increased width for 2 columns */
+            max-width: 700px;
             border-radius: var(--border-radius);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            overflow: hidden; /* Hide overflowing content from header */
+            overflow: hidden;
         }
         #formModal .modal-content {
              max-width: 800px;
@@ -335,10 +335,9 @@
         #formFields {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px 25px; /* row-gap column-gap */
+            gap: 18px 25px;
         }
         
-        /* This CSS magic makes the last item span both columns IF it's an odd-numbered item (like the 5th item) */
         #formFields .form-group:last-child:nth-child(odd) {
             grid-column: 1 / -1;
         }
@@ -350,7 +349,7 @@
         
         .modal-content .close {
             color: var(--secondary-color);
-            position: absolute; /* Position relative to modal-content */
+            position: absolute;
             top: 22px;
             right: 25px;
             font-size: 30px;
@@ -367,23 +366,23 @@
         #messageModalButtons { margin-top: 20px; display: flex; justify-content: center; gap: 10px;}
         
         /* Form Styles */
-        .form-group { margin: 0; text-align: left; } /* Changed margin */
+        .form-group { margin: 0; text-align: left; }
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--dark-color);
         }
-        .form-group input, .form-group select, .form-group textarea { /* --- PERUBAHAN DIMULAI --- Menambahkan textarea */
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
             box-sizing: border-box;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             transition: all 0.2s;
-            font-family: var(--font-family); /* --- PERUBAHAN DIMULAI --- Menambahkan font-family */
+            font-family: var(--font-family);
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { /* --- PERUBAHAN DIMULAI --- Menambahkan textarea */
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
@@ -450,7 +449,6 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* --- PERUBAHAN DIMULAI --- */
         .dropdown-options-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -460,8 +458,6 @@
             min-height: 150px;
             resize: vertical;
         }
-        /* --- PERUBAHAN SELESAI --- */
-
 
         /* Responsive Design */
         @media (max-width: 992px) {
@@ -469,7 +465,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 768px) {
             .nav { justify-content: flex-start; }
             #logoutButton {
@@ -483,14 +478,11 @@
             th, td { padding: 10px; }
             .header { padding: 15px; }
             .container { padding: 15px; }
-
-            /* Make modal form 1 column on small screens */
             #formFields {
                 grid-template-columns: 1fr;
                 gap: 18px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -539,26 +531,26 @@
                 <div class="settings-card">
                     <h3><i class="fas fa-award"></i> Pengaturan Predikat</h3>
                     <div class="form-group">
-                        <label>Predikat Tertinggi (Teks)</label>
+                        <label for="predikatTaatText">Predikat Tertinggi (Teks)</label>
                         <input type="text" id="predikatTaatText" placeholder="misal: Taat">
                     </div>
                     <div class="form-group">
-                         <label>Ambang Batas Nilai (di atas %)</label>
+                         <label for="predikatTaatValue">Ambang Batas Nilai (di atas %)</label>
                         <input type="number" id="predikatTaatValue" min="0" max="100" placeholder="misal: 85">
                     </div>
                      <div class="form-group">
-                        <label>Predikat Menengah (Teks)</label>
+                        <label for="predikatTerbiasaText">Predikat Menengah (Teks)</label>
                         <input type="text" id="predikatTerbiasaText" placeholder="misal: Terbiasa">
                     </div>
                     <div class="form-group">
-                        <label>Ambang Batas Nilai (di atas %)</label>
+                        <label for="predikatTerbiasaValue">Ambang Batas Nilai (di atas %)</label>
                         <input type="number" id="predikatTerbiasaValue" min="0" max="100" placeholder="misal: 70">
                     </div>
                     <div class="form-group">
-                        <label>Predikat Terendah (Teks)</label>
+                        <label for="predikatKurangText">Predikat Terendah (Teks)</label>
                         <input type="text" id="predikatKurangText" placeholder="misal: Perlu Pembiasaan">
                     </div>
-                    <button class="btn-add" style="width:100%; margin-top: auto;" onclick="savePredikatSettings()"><i class="fas fa-save"></i> Simpan Pengaturan</button>
+                    <button class="btn-add" style="width:100%; margin-top: auto;" onclick="savePredikatSettings(this)"><i class="fas fa-save"></i> Simpan Pengaturan</button>
                 </div>
 
                 <div class="settings-card">
@@ -566,7 +558,7 @@
                     
                     <p>Pilih ibadah yang akan dihitung dalam penilaian. Jumlah yang diceklis akan menjadi syarat minimum poin agar ibadah dianggap tuntas.</p>
                     <div class="form-group ibadah-checkbox-grid" id="ibadahSettingsContainer"></div>
-                    <button class="btn-add" style="width:100%;" onclick="saveIbadahSettings()"><i class="fas fa-save"></i> Simpan Pengaturan Ibadah</button>
+                    <button class="btn-add" style="width:100%;" onclick="saveIbadahSettings(this)"><i class="fas fa-save"></i> Simpan Pengaturan Ibadah</button>
 
                     <hr class="settings-separator">
 
@@ -580,7 +572,7 @@
                         <label for="batasTidurCepat">Batas Waktu Tidur Cepat</label>
                         <input type="time" id="batasTidurCepat">
                     </div>
-                    <button class="btn-add" style="width:100%;" onclick="saveWaktuSettings()"><i class="fas fa-save"></i> Simpan Pengaturan Waktu</button>
+                    <button class="btn-add" style="width:100%;" onclick="saveWaktuSettings(this)"><i class="fas fa-save"></i> Simpan Pengaturan Waktu</button>
                 </div>
 
                 <div class="settings-card" style="grid-column: 1 / -1;">
@@ -618,7 +610,31 @@
                     </div>
                     <button class="btn-add" style="width:100%; margin-top: auto;" onclick="saveIbadahDropdowns(this)"><i class="fas fa-save"></i> Simpan Opsi Ibadah</button>
                 </div>
+
+                <div class="settings-card" style="grid-column: 1 / -1;">
+                    <h3><i class="fas fa-book-open"></i> Editor Konten Tutorial Login</h3>
+                    <p>Ubah teks yang akan muncul di modal tutorial pada halaman login. Gunakan tag HTML sederhana seperti `<strong>` untuk tebal atau `<em>` untuk miring jika perlu.</p>
+                    
+                    <div class="form-group" style="margin-top:15px;">
+                        <label for="tutorialAdmin"><strong>Konten untuk Admin:</strong></label>
+                        <textarea id="tutorialAdmin" rows="4" placeholder="Jelaskan alur penggunaan untuk Admin..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tutorialGuru"><strong>Konten untuk Guru:</strong></label>
+                        <textarea id="tutorialGuru" rows="4" placeholder="Jelaskan alur penggunaan untuk Guru..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tutorialSiswa"><strong>Konten untuk Siswa:</strong></label>
+                        <textarea id="tutorialSiswa" rows="4" placeholder="Jelaskan alur penggunaan untuk Siswa..."></textarea>
+                    </div>
+                    
+                    <button class="btn-add" style="width:100%; margin-top: auto;" onclick="saveTutorialContent(this)">
+                        <i class="fas fa-save"></i> Simpan Konten Tutorial
+                    </button>
                 </div>
+            </div>
         </div>
 
 
@@ -688,7 +704,7 @@
     
     <div id="formModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('formModal')">&times;</span>
+            <span class="close" onclick="closeModal('formModal')">×</span>
             <h3 id="modalTitle">Form Data</h3>
             <form id="dataForm">
                 <input type="hidden" id="formType">
@@ -701,7 +717,7 @@
 
     <div id="messageModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('messageModal')">&times;</span>
+            <span class="close" onclick="closeModal('messageModal')">×</span>
             <h3 id="messageModalTitle">Pemberitahuan</h3>
             <p id="messageModalText"></p>
             <div id="messageModalButtons"></div>
@@ -712,7 +728,7 @@
         <div class="modal-content" style="max-width: 600px;">
              <h3 id="uploadModalTitle" style="padding: 20px 25px; background-color: var(--light-color); border-bottom: 1px solid var(--border-color); color: var(--primary-hover); font-size: 1.4rem; font-weight: 600;"><i class="fas fa-file-upload"></i> Upload Data Siswa</h3>
             <div style="padding: 25px;">
-                <span class="close" onclick="closeModal('uploadModal'); document.getElementById('uploadStatus').innerHTML='';">&times;</span>
+                <span class="close" onclick="closeModal('uploadModal'); document.getElementById('uploadStatus').innerHTML='';">×</span>
                 <p>Unggah data siswa secara massal menggunakan file Excel. Silakan unduh format yang benar terlebih dahulu untuk menghindari kesalahan.</p>
                 <div class="form-group">
                     <a href="#" id="downloadFormatButton" class="btn-download"><i class="fas fa-download"></i> Download Format Excel</a>
@@ -728,10 +744,6 @@
     </div>
 
     <script>
-        // ===================================================================================
-        // ALL JAVASCRIPT LOGIC
-        // ===================================================================================
-        
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx6FdJRkDdDlHugFn5NEY7DYJV709nbyaUzlQIqSywTMufphoeNyhYEEJHBsaqDqpZZ/exec';
         const formModal = document.getElementById('formModal');
         const messageModal = document.getElementById('messageModal');
@@ -762,13 +774,61 @@
             }
             loadGlobalSettings();
             loadAllUserData();
-            loadIbadahDropdowns(); // --- PERUBAHAN DIMULAI --- Memuat opsi dropdown
+            loadIbadahDropdowns();
+            loadTutorialContent(); // <-- Memuat konten tutorial saat halaman admin dibuka
         };
 
         // ========================================================================
-        // FUNGSI BARU: BACKUP DAN RESTORE
+        // FUNGSI BARU: EDITOR TUTORIAL
         // ========================================================================
+        function loadTutorialContent() {
+            fetch(`${scriptURL}?action=getTutorialContent`)
+                .then(response => response.json())
+                .then(res => {
+                    if (res.status === 'success' && res.data) {
+                        document.getElementById('tutorialAdmin').value = res.data.admin_section || '';
+                        document.getElementById('tutorialGuru').value = res.data.guru_section || '';
+                        document.getElementById('tutorialSiswa').value = res.data.siswa_section || '';
+                    } else {
+                        console.error("Gagal memuat konten tutorial:", res.message);
+                    }
+                })
+                .catch(error => console.error("Error jaringan saat memuat tutorial:", error));
+        }
 
+        function saveTutorialContent(button) {
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+
+            const payload = {
+                action: 'updateTutorialContent',
+                data: {
+                    admin_section: document.getElementById('tutorialAdmin').value,
+                    guru_section: document.getElementById('tutorialGuru').value,
+                    siswa_section: document.getElementById('tutorialSiswa').value
+                }
+            };
+
+            fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
+                .then(response => response.json())
+                .then(res => {
+                    if (res.status === 'success') {
+                        showMessage('Konten tutorial berhasil disimpan!', 'Sukses');
+                    } else {
+                        throw new Error(res.message);
+                    }
+                })
+                .catch(error => showMessage(`Gagal menyimpan: ${error.message}`, 'Error'))
+                .finally(() => {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                });
+        }
+        
+        // ========================================================================
+        // FUNGSI LAINNYA...
+        // ========================================================================
         function backupData(button) {
             const originalText = button.innerHTML;
             button.disabled = true;
@@ -822,7 +882,7 @@
                         'Anda yakin ingin memulihkan data? TINDAKAN INI AKAN MENGHAPUS SEMUA DATA LAMA DAN MENGGANTINYA DENGAN DATA DARI FILE BACKUP. Tindakan ini tidak dapat diurungkan.',
                         'Konfirmasi Pemulihan Data',
                         'confirm',
-                        () => { // onConfirm action
+                        () => {
                             const originalText = button.innerHTML;
                             button.disabled = true;
                             fileInput.disabled = true;
@@ -838,9 +898,7 @@
                                 .then(res => {
                                     if (res.status === 'success') {
                                         showMessage(res.message, 'Pemulihan Berhasil', 'alert', () => {
-                                            // Muat ulang semua data untuk me-refresh tampilan
-                                            loadGlobalSettings();
-                                            loadAllUserData();
+                                            location.reload(); // Reload halaman untuk sinkronisasi penuh
                                         });
                                     } else {
                                         throw new Error(res.message);
@@ -853,7 +911,7 @@
                                     button.disabled = false;
                                     fileInput.disabled = false;
                                     button.innerHTML = originalText;
-                                    fileInput.value = ''; // Reset file input
+                                    fileInput.value = '';
                                 });
                         }
                     );
@@ -870,26 +928,23 @@
             reader.readAsText(file);
         }
 
-        // --- PERUBAHAN DIMULAI ---
-        // ========================================================================
-        // FUNGSI BARU: MENGELOLA DROPDOWN IBADAH
-        // ========================================================================
         function loadIbadahDropdowns() {
             fetch(`${scriptURL}?action=getIbadahDropdowns`)
                 .then(response => response.json())
                 .then(res => {
-                    if (res.status === 'success' && res.data.options) {
+                    if (res.status === 'success' && res.data && res.data.options) {
                         for (let i = 1; i <= 7; i++) {
                             const textarea = document.getElementById(`opsiIbadah${i}`);
-                            // PERBAIKAN: Tambahkan .options untuk mengakses object yang benar
-                            const options = res.data.options[`ibadah${i}`] || []; // <-- DIUBAH
-                            textarea.value = options.join('\n');
+                            if(textarea) {
+                                const options = res.data.options[`ibadah${i}`] || [];
+                                textarea.value = options.join('\n');
+                            }
                         }
                     } else {
-                        showMessage('Gagal memuat opsi dropdown ibadah: ' + res.message, 'Error');
+                        console.error('Gagal memuat opsi dropdown ibadah: ', res.message);
                     }
                 })
-                .catch(error => showMessage(`Error Jaringan saat memuat dropdown: ${error.message}`, 'Error'));
+                .catch(error => console.error(`Error Jaringan saat memuat dropdown: ${error.message}`));
         }
 
         function saveIbadahDropdowns(button) {
@@ -900,7 +955,6 @@
             let allOptions = [];
             let maxRows = 0;
 
-            // Kumpulkan semua opsi dan cari jumlah baris maksimum
             for (let i = 1; i <= 7; i++) {
                 const textarea = document.getElementById(`opsiIbadah${i}`);
                 const options = textarea.value.split('\n').map(opt => opt.trim()).filter(Boolean);
@@ -910,12 +964,10 @@
                 }
             }
 
-            // Buat 2D array (matriks) yang ukurannya sesuai
             const dataForSheet = [];
             for (let r = 0; r < maxRows; r++) {
                 const row = [];
                 for (let c = 0; c < 7; c++) {
-                    // Isi dengan opsi jika ada, atau string kosong jika tidak
                     row.push(allOptions[c][r] || '');
                 }
                 dataForSheet.push(row);
@@ -941,126 +993,57 @@
                     button.innerHTML = originalText;
                 });
         }
-        // --- PERUBAHAN SELESAI ---
-
-        // ========================================================================
-        // FUNGSI LAMA (TIDAK DIUBAH)
-        // ========================================================================
         
         function downloadTableAsPDF(tableId, title) {
             try {
-                const jsPDF = window.jspdf.jsPDF;
-                const doc = new jsPDF({
-                    orientation: 'landscape',
-                    unit: 'mm',
-                    format: 'a4'
-                });
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({ orientation: 'landscape' });
 
                 const table = document.getElementById(tableId);
-                if (!table) {
-                    showMessage('Tabel tidak ditemukan!', 'Error');
-                    return;
-                }
-                if (!globalSettings.schoolInfo) {
-                    showMessage('Data sekolah belum dimuat.', 'Peringatan');
-                    return;
-                }
+                if (!table) throw new Error("Tabel tidak ditemukan!");
+                if (!globalSettings.schoolInfo) throw new Error("Data sekolah belum dimuat.");
 
                 const schoolInfo = globalSettings.schoolInfo;
-                const namaSekolah = schoolInfo['NAMA Sekolah'] || 'Nama Sekolah';
-                const namaKepsek = schoolInfo['Nama Kepala Sekolah'] || 'Nama Kepala Sekolah';
-                const nipKepsek = schoolInfo['NIP Kepala Sekolah'] || '-';
+                doc.setFontSize(16);
+                doc.text(schoolInfo['NAMA Sekolah'] || 'Nama Sekolah', doc.internal.pageSize.getWidth() / 2, 10, { align: 'center' });
+                doc.setFontSize(12);
+                doc.text(title, doc.internal.pageSize.getWidth() / 2, 16, { align: 'center' });
 
-                const head = [];
+                const head = [[]];
+                table.querySelectorAll('thead th').forEach(th => head[0].push(th.innerText));
                 const body = [];
-
-                const lastHeader = table.querySelector('thead th:last-child');
-                const skipLastColumn = lastHeader && lastHeader.innerText.toLowerCase() === 'aksi';
-                
-                const colCount = table.querySelectorAll('thead th').length; 
-                const endColumnIndex = skipLastColumn ? colCount - 1 : colCount;
-
-                table.querySelectorAll('thead th').forEach((th, index) => {
-                    if (index < endColumnIndex) {
-                        head.push(th.innerText);
-                    }
-                });
-
                 table.querySelectorAll('tbody tr').forEach(tr => {
                     const rowData = [];
-                    tr.querySelectorAll('td').forEach((td, index) => {
-                        if (index < endColumnIndex) {
-                            rowData.push(td.innerText);
-                        }
-                    });
+                    tr.querySelectorAll('td').forEach(td => rowData.push(td.innerText));
                     body.push(rowData);
                 });
-                
-                let startY = 20;
-                const startX = 10;
-                const rowHeight = 8;
-                const pageWidth = doc.internal.pageSize.getWidth();
-                const margin = 10;
-                const usableWidth = pageWidth - (margin * 2);
-                const colWidth = usableWidth / head.length;
 
-                doc.setFontSize(16);
-                doc.text(namaSekolah, pageWidth / 2, 10, { align: 'center' });
-                doc.setFontSize(12);
-                doc.text(title, pageWidth / 2, 16, { align: 'center' });
-
-                doc.setFont('helvetica', 'bold');
-                doc.setFontSize(10);
-                doc.setDrawColor(0);
-                doc.setFillColor(230, 230, 230);
-                doc.rect(startX, startY, usableWidth, rowHeight, 'F');
-                head.forEach((text, i) => {
-                    const headerText = doc.splitTextToSize(String(text), colWidth - 6);
-                    doc.text(headerText, startX + (i * colWidth) + 3, startY + 5);
-                });
-                startY += rowHeight;
-
-                doc.setFont('helvetica', 'normal');
-                body.forEach((row, rowIndex) => {
-                    if (startY > doc.internal.pageSize.getHeight() - 20) {
-                        doc.addPage();
-                        startY = 15;
-                    }
-                    if(rowIndex % 2 !== 0) {
-                        doc.setFillColor(245, 245, 245);
-                        doc.rect(startX, startY, usableWidth, rowHeight, 'F');
-                    }
-                    row.forEach((text, i) => {
-                        const cellText = doc.splitTextToSize(String(text), colWidth - 6);
-                        doc.text(cellText, startX + (i * colWidth) + 3, startY + 5);
-                    });
-                    startY += rowHeight;
+                doc.autoTable({
+                    startY: 20,
+                    head: head,
+                    body: body,
+                    theme: 'grid',
+                    headStyles: { fillColor: [0, 123, 255] }
                 });
 
-                const finalY = startY;
-                const today = new Date();
-                const dateStr = today.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-                const locationAndDate = `Jakarta, ${dateStr}`;
+                const finalY = doc.lastAutoTable.finalY;
+                const dateStr = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
                 
                 let signatureY = finalY + 15;
+                if (signatureY > doc.internal.pageSize.getHeight() - 40) doc.addPage();
 
-                if (signatureY > doc.internal.pageSize.getHeight() - 40) {
-                    doc.addPage();
-                    signatureY = 20;
-                }
-                
                 const signatureX = doc.internal.pageSize.getWidth() - 70;
                 doc.setFontSize(10);
-                doc.text(locationAndDate, signatureX, signatureY);
+                doc.text(`Jakarta, ${dateStr}`, signatureX, signatureY);
                 doc.text('Kepala Sekolah', signatureX, signatureY + 5);
-                doc.text(namaKepsek, signatureX, signatureY + 25);
-                doc.text(`NIP. ${nipKepsek}`, signatureX, signatureY + 30);
+                doc.text(schoolInfo['Nama Kepala Sekolah'] || 'Nama Kepala Sekolah', signatureX, signatureY + 25);
+                doc.text(`NIP. ${schoolInfo['NIP Kepala Sekolah'] || '-'}`, signatureX, signatureY + 30);
 
                 doc.save(`${title.replace(/ /g, '_')}.pdf`);
 
             } catch (error) {
                 console.error("Gagal membuat PDF:", error);
-                showMessage("Terjadi kesalahan saat membuat PDF. Silakan cek console.", "Error");
+                showMessage(`Terjadi kesalahan saat membuat PDF: ${error.message}`, "Error");
             }
         }
         
@@ -1108,29 +1091,19 @@
                     const worksheet = workbook.Sheets[firstSheetName];
                     
                     const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, range: 1 });
-
                     const filteredData = jsonData.filter(row => row.length > 0 && row.some(cell => cell !== null && String(cell).trim() !== ''));
 
-                    if (filteredData.length === 0) {
-                        throw new Error("File Excel tidak berisi data atau formatnya salah.");
-                    }
+                    if (filteredData.length === 0) throw new Error("File Excel tidak berisi data atau formatnya salah.");
 
-                    // Pastikan setiap baris memiliki 5 kolom sesuai format
                     const validatedData = filteredData.map(row => {
                         let newRow = [...row];
-                        while(newRow.length < 5) {
-                            newRow.push(''); // Tambahkan sel kosong jika kurang
-                        }
-                        return newRow.slice(0, 5); // Ambil 5 kolom pertama saja
+                        while(newRow.length < 5) newRow.push('');
+                        return newRow.slice(0, 5);
                     });
-
 
                     uploadStatus.textContent = `Mengunggah ${validatedData.length} data siswa...`;
 
-                    const payload = {
-                        action: 'uploadSiswaExcel',
-                        data: validatedData
-                    };
+                    const payload = { action: 'uploadSiswaExcel', data: validatedData };
 
                     fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
                         .then(response => response.json())
@@ -1143,10 +1116,7 @@
                                 throw new Error(res.message);
                             }
                         })
-                        .catch(error => {
-                            uploadStatus.textContent = '';
-                            showMessage(`Gagal mengunggah: ${error.message}`, 'Error');
-                        })
+                        .catch(error => showMessage(`Gagal mengunggah: ${error.message}`, 'Error'))
                         .finally(() => {
                             uploadButton.disabled = false;
                             uploadStatus.innerHTML = '';
@@ -1172,7 +1142,6 @@
                         globalSettings = res.data;
                         
                         const info = globalSettings.schoolInfo;
-                        const logoUrl = info['Url Logo Sekolah'] || '';
                         schoolContainer.innerHTML = `
                             <div class="info-item"><div class="info-label">Nama Sekolah</div>: ${info['NAMA Sekolah'] || ''}</div>
                             <div class="info-item"><div class="info-label">NPSN</div>: ${info['NPSN'] || ''}</div>
@@ -1181,7 +1150,7 @@
                             <div class="info-item"><div class="info-label">Nama Kepala Sekolah</div>: ${info['Nama Kepala Sekolah'] || ''}</div>
                             <div class="info-item"><div class="info-label">NIP Kepala Sekolah</div>: ${info['NIP Kepala Sekolah'] || ''}</div>
                             <div class="info-item"><div class="info-label">Nomor HP Admin</div>: ${info['Nomor HP Admin'] || ''}</div>
-                            <div class="info-item"><div class="info-label">Logo</div>: <img src="${logoUrl}" alt="Logo Sekolah" class="info-logo" onerror="this.style.display='none'"></div>
+                            <div class="info-item"><div class="info-label">Logo</div>: <img src="${info['Url Logo Sekolah'] || ''}" alt="Logo Sekolah" class="info-logo" onerror="this.style.display='none'"></div>
                         `;
 
                         const predikat = globalSettings.predikat;
@@ -1192,90 +1161,91 @@
                         document.getElementById('predikatKurangText').value = predikat.kurangText || '';
 
                         const waktu = globalSettings.waktu;
-                        if (waktu) {
-                            document.getElementById('batasBangunPagi').value = waktu.bangunPagi || '05:00';
-                            document.getElementById('batasTidurCepat').value = waktu.tidurCepat || '21:00';
-                        }
+                        document.getElementById('batasBangunPagi').value = waktu.bangunPagi || '05:00';
+                        document.getElementById('batasTidurCepat').value = waktu.tidurCepat || '21:00';
                         
                         const ibadahContainer = document.getElementById('ibadahSettingsContainer');
                         ibadahContainer.innerHTML = '';
                         const ibadahSettings = globalSettings.ibadah.settings || [];
                         for (let i = 0; i < 7; i++) {
-                            const isChecked = ibadahSettings[i] === true ? 'checked' : '';
-                            const div = document.createElement('div');
-                            div.innerHTML = `
-                                <input type="checkbox" id="ibadahCheck${i+1}" ${isChecked}>
-                                <label for="ibadahCheck${i+1}">Ibadah ${i+1}</label>
+                            ibadahContainer.innerHTML += `
+                                <div>
+                                    <input type="checkbox" id="ibadahCheck${i+1}" ${ibadahSettings[i] ? 'checked' : ''}>
+                                    <label for="ibadahCheck${i+1}">Ibadah ${i+1}</label>
+                                </div>
                             `;
-                            ibadahContainer.appendChild(div);
                         }
                     } else {
-                        showMessage('Gagal memuat pengaturan global: ' + res.message, 'Error');
-                        schoolContainer.innerHTML = `<p style="color:red;">Gagal memuat pengaturan.</p>`;
+                        throw new Error(res.message);
                     }
                 })
                 .catch(error => {
-                    showMessage(`Error Jaringan: ${error.message}`, 'Error');
+                    showMessage(`Gagal memuat pengaturan global: ${error.message}`, 'Error');
                     schoolContainer.innerHTML = `<p style="color:red;">Gagal memuat pengaturan.</p>`;
                 });
         }
-
-        function savePredikatSettings() {
-            const payload = {
-                action: 'updateSettings',
-                values: {
-                    predikat: {
-                        taatText: document.getElementById('predikatTaatText').value,
-                        taatValue: document.getElementById('predikatTaatValue').value,
-                        terbiasaText: document.getElementById('predikatTerbiasaText').value,
-                        terbiasaValue: document.getElementById('predikatTerbiasaValue').value,
-                        kurangText: document.getElementById('predikatKurangText').value,
-                    }
+        
+        function createSettingsUpdater(button, settingsKey) {
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+            
+            const payload = { action: 'updateSettings', values: {} };
+            
+            if (settingsKey === 'predikat') {
+                payload.values.predikat = {
+                    taatText: document.getElementById('predikatTaatText').value,
+                    taatValue: document.getElementById('predikatTaatValue').value,
+                    terbiasaText: document.getElementById('predikatTerbiasaText').value,
+                    terbiasaValue: document.getElementById('predikatTerbiasaValue').value,
+                    kurangText: document.getElementById('predikatKurangText').value,
+                };
+            } else if (settingsKey === 'ibadah') {
+                const settingsArray = [];
+                for (let i = 1; i <= 7; i++) {
+                    settingsArray.push(document.getElementById(`ibadahCheck${i}`).checked);
                 }
-            };
-            sendSettingsUpdate(payload, 'Pengaturan predikat berhasil disimpan!');
+                payload.values.ibadah = { settings: settingsArray };
+            } else if (settingsKey === 'waktu') {
+                payload.values.waktu = {
+                    bangunPagi: document.getElementById('batasBangunPagi').value,
+                    tidurCepat: document.getElementById('batasTidurCepat').value,
+                };
+            }
+
+            return fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
+                .then(response => response.json())
+                .finally(() => {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                });
         }
 
-        function saveIbadahSettings() {
-            const settingsArray = [];
-            for (let i = 1; i <= 7; i++) {
-                const isChecked = document.getElementById(`ibadahCheck${i}`).checked;
-                settingsArray.push(isChecked);
-            }
-            const payload = {
-                action: 'updateSettings',
-                values: {
-                    ibadah: {
-                        settings: settingsArray
-                    }
-                }
-            };
-            sendSettingsUpdate(payload, 'Pengaturan ibadah berhasil disimpan!');
+        function savePredikatSettings(button) {
+            createSettingsUpdater(button, 'predikat').then(res => {
+                if (res.status === 'success') {
+                    showMessage('Pengaturan predikat berhasil disimpan!', 'Sukses');
+                    loadGlobalSettings();
+                } else { throw new Error(res.message); }
+            }).catch(error => showMessage(`Gagal menyimpan: ${error.message}`, 'Error'));
+        }
+
+        function saveIbadahSettings(button) {
+            createSettingsUpdater(button, 'ibadah').then(res => {
+                 if (res.status === 'success') {
+                    showMessage('Pengaturan ibadah berhasil disimpan!', 'Sukses');
+                    loadGlobalSettings();
+                } else { throw new Error(res.message); }
+            }).catch(error => showMessage(`Gagal menyimpan: ${error.message}`, 'Error'));
         }
         
-        function saveWaktuSettings() {
-            const payload = {
-                action: 'updateSettings',
-                values: {
-                    waktu: {
-                        bangunPagi: document.getElementById('batasBangunPagi').value,
-                        tidurCepat: document.getElementById('batasTidurCepat').value,
-                    }
-                }
-            };
-            sendSettingsUpdate(payload, 'Pengaturan waktu berhasil disimpan!');
-        }
-
-        function sendSettingsUpdate(payload, successMessage) {
-            fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
-                .then(response => response.json())
-                .then(res => {
-                    if (res.status === 'success') {
-                        showMessage(successMessage, 'Sukses');
-                        loadGlobalSettings();
-                    } else { throw new Error(res.message); }
-                })
-                .catch(error => showMessage(`Gagal menyimpan: ${error.message}`, 'Error'));
+        function saveWaktuSettings(button) {
+            createSettingsUpdater(button, 'waktu').then(res => {
+                 if (res.status === 'success') {
+                    showMessage('Pengaturan waktu berhasil disimpan!', 'Sukses');
+                    loadGlobalSettings();
+                } else { throw new Error(res.message); }
+            }).catch(error => showMessage(`Gagal menyimpan: ${error.message}`, 'Error'));
         }
 
         document.getElementById('logoutButton').addEventListener('click', function(e) {
@@ -1317,11 +1287,7 @@
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
-            modal.style.animation = 'fadeOut 0.3s';
-            setTimeout(() => {
-                modal.style.display = 'none';
-                modal.style.animation = '';
-            }, 290);
+            modal.style.display = 'none';
         }
         
         window.onclick = event => {
@@ -1340,13 +1306,10 @@
         }
 
         function openTab(evt, tabName) {
-            let i, content, tabButtons;
-            content = document.getElementsByClassName("content");
-            for (i = 0; i < content.length; i++) content[i].style.display = "none";
-            tabButtons = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tabButtons.length; i++) tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            document.querySelectorAll('.content').forEach(tab => tab.style.display = "none");
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove("active"));
             document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            evt.currentTarget.classList.add("active");
             
             if (tabName === 'rekapKelas' && !document.getElementById('tabelRekapKelas').dataset.loaded) {
                 loadRekapKelasData();
@@ -1362,7 +1325,7 @@
         }
 
         function loadRekapKelasData() {
-            const tableBody = document.getElementById('tabelRekapKelas').getElementsByTagName('tbody')[0];
+            const tableBody = document.getElementById('tabelRekapKelas').querySelector('tbody');
             tableBody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Memuat data rekapitulasi...</td></tr>`;
 
             fetch(`${scriptURL}?action=getPercentageRekap`)
@@ -1371,7 +1334,6 @@
                     if (res.status !== 'success') throw new Error(res.message);
 
                     rawRekapData = res.data; 
-                    const allClassPercentages = rawRekapData;
                     tableBody.innerHTML = '';
                     document.getElementById('tabelRekapKelas').dataset.loaded = 'true';
                     
@@ -1380,27 +1342,24 @@
                         rekapChartInstances = [];
                     }
 
-                    if (Object.keys(allClassPercentages).length === 0) {
+                    if (Object.keys(rawRekapData).length === 0) {
                          tableBody.innerHTML = `<tr><td colspan="8" style="text-align:center;">Belum ada data laporan di kelas manapun.</td></tr>`;
-                         renderSchoolRekap(rawRekapData);
-                         renderRekapChart(rawRekapData);
-                         return;
+                    } else {
+                        for (const className in rawRekapData) {
+                            const percentages = rawRekapData[className];
+                            const row = tableBody.insertRow();
+                            row.innerHTML = `
+                                <td>${className}</td>
+                                <td>${calculatePredicate(percentages.beribadah)}</td>
+                                <td>${calculatePredicate(percentages.tidurCepat)}</td>
+                                <td>${calculatePredicate(percentages.bangunPagi)}</td>
+                                <td>${calculatePredicate(percentages.olahraga)}</td>
+                                <td>${calculatePredicate(percentages.belajar)}</td>
+                                <td>${calculatePredicate(percentages.makanBergizi)}</td>
+                                <td>${calculatePredicate(percentages.bermasyarakat)}</td>
+                            `;
+                        }
                     }
-
-                    for (const className in allClassPercentages) {
-                        const percentages = allClassPercentages[className];
-                        const row = tableBody.insertRow();
-                        
-                        row.insertCell().textContent = className;
-                        row.insertCell().textContent = calculatePredicate(percentages.beribadah);
-                        row.insertCell().textContent = calculatePredicate(percentages.tidurCepat);
-                        row.insertCell().textContent = calculatePredicate(percentages.bangunPagi);
-                        row.insertCell().textContent = calculatePredicate(percentages.olahraga);
-                        row.insertCell().textContent = calculatePredicate(percentages.belajar);
-                        row.insertCell().textContent = calculatePredicate(percentages.makanBergizi);
-                        row.insertCell().textContent = calculatePredicate(percentages.bermasyarakat);
-                    }
-                    
                     renderSchoolRekap(rawRekapData);
                     renderRekapChart(rawRekapData);
                 })
@@ -1415,9 +1374,7 @@
             container.innerHTML = '';
 
             const classCount = Object.keys(rekapData).length;
-            if (classCount === 0) {
-                return;
-            }
+            if (classCount === 0) return;
 
             const averages = {
                 beribadah: 0, tidurCepat: 0, bangunPagi: 0,
@@ -1426,30 +1383,20 @@
             const keys = Object.keys(averages);
             
             for (const className in rekapData) {
-                for (const key of keys) {
-                    averages[key] += rekapData[className][key];
-                }
+                keys.forEach(key => averages[key] += rekapData[className][key]);
             }
-            for (const key of keys) {
-                averages[key] = averages[key] / classCount;
-            }
+            keys.forEach(key => averages[key] /= classCount);
 
             const card = document.createElement('div');
             card.className = 'settings-card';
-            const canvasId = `schoolRekapChart`;
-            card.innerHTML = `
-                <h3 style="text-align:center; margin-bottom: 15px;"><i class="fas fa-school" style="margin-right: 8px;"></i> Rata-Rata Sekolah</h3>
-                <div style="position: relative; height: 250px;">
-                    <canvas id="${canvasId}"></canvas>
-                </div>
-            `;
+            card.innerHTML = `<h3 style="text-align:center; margin-bottom: 15px;"><i class="fas fa-school"></i> Rata-Rata Sekolah</h3><div style="position: relative; height: 250px;"><canvas id="schoolRekapChart"></canvas></div>`;
             container.appendChild(card);
             
             const categories = ["Beribadah", "Tidur Cepat", "Bangun Pagi", "Olah Raga", "Belajar", "Makan Bergizi", "Bermasyarakat"];
             const averageData = keys.map(key => averages[key].toFixed(1));
 
-            const ctx = document.getElementById(canvasId).getContext('2d');
-            const newChart = new Chart(ctx, {
+            const ctx = document.getElementById('schoolRekapChart').getContext('2d');
+            rekapChartInstances.push(new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: categories,
@@ -1467,32 +1414,17 @@
                     indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
-                    scales: {
-                        x: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { display: false } },
-                        y: { grid: { display: false } }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        title: { display: false },
-                        datalabels: {
-                            anchor: 'end',
-                            align: 'right',
-                            formatter: (value) => value + '%',
-                            color: '#333',
-                            font: { weight: 'bold' }
-                        }
-                    }
+                    scales: { x: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { display: false } }, y: { grid: { display: false } } },
+                    plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'right', formatter: (v) => v + '%', color: '#333', font: { weight: 'bold' } } }
                 }
-            });
-            rekapChartInstances.push(newChart);
+            }));
         }
 
         function renderRekapChart(rekapData) {
             const chartContainer = document.getElementById('rekapChartContainer');
             chartContainer.innerHTML = ''; 
 
-            const classNames = Object.keys(rekapData);
-            if (classNames.length === 0) {
+            if (Object.keys(rekapData).length === 0) {
                 chartContainer.innerHTML = '<p>Data grafik tidak tersedia karena belum ada laporan yang masuk.</p>';
                 return; 
             }
@@ -1504,18 +1436,13 @@
                 const card = document.createElement('div');
                 card.className = 'settings-card';
                 const canvasId = `chart-${className.replace(/\s+/g, '-')}`;
-                card.innerHTML = `
-                    <h3 style="text-align:center; margin-bottom: 15px;"><i class="fas fa-chart-bar" style="margin-right: 8px;"></i> ${className}</h3>
-                    <div style="position: relative; height: 250px;">
-                        <canvas id="${canvasId}"></canvas>
-                    </div>
-                `;
+                card.innerHTML = `<h3 style="text-align:center; margin-bottom: 15px;"><i class="fas fa-chart-bar"></i> ${className}</h3><div style="position: relative; height: 250px;"><canvas id="${canvasId}"></canvas></div>`;
                 chartContainer.appendChild(card);
                 
                 const classData = dataKeys.map(key => rekapData[className][key].toFixed(1));
 
                 const ctx = document.getElementById(canvasId).getContext('2d');
-                const newChart = new Chart(ctx, {
+                rekapChartInstances.push(new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: categories,
@@ -1533,24 +1460,10 @@
                         indexAxis: 'y',
                         responsive: true,
                         maintainAspectRatio: false,
-                        scales: {
-                            x: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { display: false } },
-                            y: { grid: { display: false } }
-                        },
-                        plugins: {
-                            legend: { display: false },
-                            title: { display: false },
-                            datalabels: {
-                                anchor: 'end',
-                                align: 'right',
-                                formatter: (value) => value + '%',
-                                color: '#333',
-                                font: { weight: 'bold' }
-                            }
-                        }
+                        scales: { x: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { display: false } }, y: { grid: { display: false } } },
+                        plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'right', formatter: (v) => v + '%', color: '#333', font: { weight: 'bold' } } }
                     }
-                });
-                rekapChartInstances.push(newChart);
+                }));
             }
         }
 
@@ -1564,14 +1477,14 @@
             }
 
             formFields.innerHTML = `
-                <div class="form-group"><label>Nama Sekolah</label><input type="text" id="nama_sekolah" data-key="NAMA Sekolah" value="${data['NAMA Sekolah'] || ''}"></div>
-                <div class="form-group"><label>NPSN</label><input type="text" id="npsn" data-key="NPSN" value="${data['NPSN'] || ''}"></div>
-                <div class="form-group"><label>Alamat</label><input type="text" id="alamat" data-key="Alamat" value="${data['Alamat'] || ''}"></div>
-                <div class="form-group"><label>Jenjang</label><input type="text" id="jenjang" data-key="Jenjang" value="${data['Jenjang'] || ''}"></div>
-                <div class="form-group"><label>URL Logo Sekolah</label><input type="text" id="url_logo" data-key="Url Logo Sekolah" value="${data['Url Logo Sekolah'] || ''}"></div>
-                <div class="form-group"><label>Nama Kepala Sekolah</label><input type="text" id="nama_kepsek" data-key="Nama Kepala Sekolah" value="${data['Nama Kepala Sekolah'] || ''}"></div>
-                <div class="form-group"><label>NIP Kepala Sekolah</label><input type="text" id="nip_kepsek" data-key="NIP Kepala Sekolah" value="${data['NIP Kepala Sekolah'] || ''}"></div>
-                <div class="form-group"><label>Nomor HP Admin</label><input type="text" id="no_hp_admin" data-key="Nomor HP Admin" value="${data['Nomor HP Admin'] || ''}"></div>
+                <div class="form-group"><label for="nama_sekolah">Nama Sekolah</label><input type="text" id="nama_sekolah" data-key="NAMA Sekolah" value="${data['NAMA Sekolah'] || ''}"></div>
+                <div class="form-group"><label for="npsn">NPSN</label><input type="text" id="npsn" data-key="NPSN" value="${data['NPSN'] || ''}"></div>
+                <div class="form-group"><label for="alamat">Alamat</label><input type="text" id="alamat" data-key="Alamat" value="${data['Alamat'] || ''}"></div>
+                <div class="form-group"><label for="jenjang">Jenjang</label><input type="text" id="jenjang" data-key="Jenjang" value="${data['Jenjang'] || ''}"></div>
+                <div class="form-group"><label for="url_logo">URL Logo Sekolah</label><input type="text" id="url_logo" data-key="Url Logo Sekolah" value="${data['Url Logo Sekolah'] || ''}"></div>
+                <div class="form-group"><label for="nama_kepsek">Nama Kepala Sekolah</label><input type="text" id="nama_kepsek" data-key="Nama Kepala Sekolah" value="${data['Nama Kepala Sekolah'] || ''}"></div>
+                <div class="form-group"><label for="nip_kepsek">NIP Kepala Sekolah</label><input type="text" id="nip_kepsek" data-key="NIP Kepala Sekolah" value="${data['NIP Kepala Sekolah'] || ''}"></div>
+                <div class="form-group"><label for="no_hp_admin">Nomor HP Admin</label><input type="text" id="no_hp_admin" data-key="Nomor HP Admin" value="${data['Nomor HP Admin'] || ''}"></div>
             `;
             formModal.style.display = 'block';
         }
@@ -1596,12 +1509,9 @@
             const filterKelas = document.getElementById('filterKelas');
             const kelasSet = new Set(allSiswaData.map(item => item.data[4]).filter(Boolean));
             
-            while (filterKelas.options.length > 1) { filterKelas.remove(1); }
+            while (filterKelas.options.length > 1) filterKelas.remove(1);
 
-            [...kelasSet].sort().forEach(kelas => {
-                const option = new Option(kelas, kelas);
-                filterKelas.add(option);
-            });
+            [...kelasSet].sort().forEach(kelas => filterKelas.add(new Option(kelas, kelas)));
         }
 
         function filterSiswa() {
@@ -1617,7 +1527,7 @@
         }
 
         function populateTable(tableId, dataArray) {
-            const tableBody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+            const tableBody = document.getElementById(tableId).querySelector('tbody');
             tableBody.innerHTML = '';
             if (dataArray.length === 0) {
                 const colCount = document.getElementById(tableId).rows[0].cells.length;
@@ -1627,8 +1537,7 @@
             dataArray.forEach(item => {
                 const row = tableBody.insertRow();
                 item.data.forEach(cellData => row.insertCell().textContent = cellData);
-                const actionCell = row.insertCell();
-                actionCell.innerHTML = `<button class="btn-edit" onclick="editData('${tableId}', ${item.originalIndex})"><i class="fas fa-pencil-alt"></i></button><button class="btn-delete" onclick="deleteData('${tableId}', ${item.originalIndex})"><i class="fas fa-trash"></i></button>`;
+                row.insertCell().innerHTML = `<button class="btn-edit" onclick="editData('${tableId}', ${item.originalIndex})"><i class="fas fa-pencil-alt"></i></button><button class="btn-delete" onclick="deleteData('${tableId}', ${item.originalIndex})"><i class="fas fa-trash"></i></button>`;
             });
         }
 
@@ -1639,12 +1548,12 @@
             if (type === 'adminGuru') {
                 modalTitle.innerHTML = rowIndex ? '<i class="fas fa-user-edit"></i> Edit Data Admin/Guru' : '<i class="fas fa-user-plus"></i> Tambah Data Admin/Guru';
                 formFields.innerHTML = `
-                    <div class="form-group"><label>ID</label><input type="text" id="field1" value="${data[0] || ''}" required></div>
-                    <div class="form-group"><label>Username</label><input type="text" id="field2" value="${data[1] || ''}" required></div>
-                    <div class="form-group"><label>NIP/Password</label><div class="password-wrapper"><input type="password" id="field3" value="${data[2] || ''}" required><span class="toggle-password" onclick="togglePasswordVisibility('field3', this)"><i class="fas fa-eye"></i></span></div></div>
-                    <div class="form-group"><label>Nama Guru</label><input type="text" id="field4" value="${data[3] || ''}" required></div>
-                    <div class="form-group"><label>Role</label><select id="field5"><option value="Admin" ${data[4] === 'Admin' ? 'selected' : ''}>Admin</option><option value="Guru" ${data[4] === 'Guru' ? 'selected' : ''}>Guru</option></select></div>
-                    <div class="form-group"><label>Kelas</label><input type="text" id="field6" value="${data[5] || ''}"></div>
+                    <div class="form-group"><label for="field1">ID</label><input type="text" id="field1" value="${data[0] || ''}" required></div>
+                    <div class="form-group"><label for="field2">Username</label><input type="text" id="field2" value="${data[1] || ''}" required></div>
+                    <div class="form-group"><label for="field3">NIP/Password</label><div class="password-wrapper"><input type="password" id="field3" value="${data[2] || ''}" required><span class="toggle-password" onclick="togglePasswordVisibility('field3', this)"><i class="fas fa-eye"></i></span></div></div>
+                    <div class="form-group"><label for="field4">Nama Guru</label><input type="text" id="field4" value="${data[3] || ''}" required></div>
+                    <div class="form-group"><label for="field5">Role</label><select id="field5"><option value="Admin" ${data[4] === 'Admin' ? 'selected' : ''}>Admin</option><option value="Guru" ${data[4] === 'Guru' ? 'selected' : ''}>Guru</option></select></div>
+                    <div class="form-group"><label for="field6">Kelas</label><input type="text" id="field6" value="${data[5] || ''}"></div>
                 `;
             } else if (type === 'siswa') {
                 modalTitle.innerHTML = rowIndex ? '<i class="fas fa-user-edit"></i> Edit Data Siswa' : '<i class="fas fa-user-plus"></i> Tambah Data Siswa';
@@ -1658,11 +1567,11 @@
                 let kelasDropdownHTML = [...kelasSet].sort().map(kelas => `<option value="${kelas}" ${data[4] === kelas ? 'selected' : ''}>${kelas}</option>`).join('');
 
                 formFields.innerHTML = `
-                    <div class="form-group"><label>No</label><input type="text" id="field1" value="${noUrut}" required readonly></div>
-                    <div class="form-group"><label>Induk</label><input type="text" id="field2" value="${data[1] || ''}" required></div>
-                    <div class="form-group"><label>Nama Siswa</label><input type="text" id="field3" value="${data[2] || ''}" required></div>
-                    <div class="form-group"><label>Agama</label><select id="field4" required>${agamaDropdownHTML}</select></div>
-                    <div class="form-group"><label>Kelas</label><select id="field5" required><option value="">Pilih Kelas</option>${kelasDropdownHTML}</select></div>
+                    <div class="form-group"><label for="field1">No</label><input type="text" id="field1" value="${noUrut}" required readonly></div>
+                    <div class="form-group"><label for="field2">Induk</label><input type="text" id="field2" value="${data[1] || ''}" required></div>
+                    <div class="form-group"><label for="field3">Nama Siswa</label><input type="text" id="field3" value="${data[2] || ''}" required></div>
+                    <div class="form-group"><label for="field4">Agama</label><select id="field4" required>${agamaDropdownHTML}</select></div>
+                    <div class="form-group"><label for="field5">Kelas</label><select id="field5" required><option value="">Pilih Kelas</option>${kelasDropdownHTML}</select></div>
                 `;
             }
             formModal.style.display = 'block';
@@ -1671,8 +1580,9 @@
         dataForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const submitButton = document.getElementById('submitButton');
+            const originalText = submitButton.innerHTML;
             submitButton.disabled = true;
-            submitButton.textContent = 'Menyimpan...';
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
 
             const type = formTypeInput.value;
             let payload;
@@ -1680,16 +1590,14 @@
             if (type === 'schoolInfo') {
                 const values = {};
                 formFields.querySelectorAll('input, select').forEach(input => {
-                    if (input.dataset.key) { values[input.dataset.key] = input.value; }
+                    if (input.dataset.key) values[input.dataset.key] = input.value;
                 });
                 payload = { action: 'updateSchoolInfo', values };
             } else {
                 const rowIndex = rowIndexInput.value;
-                const fieldCount = type === 'adminGuru' ? 6 : (type === 'siswa' ? 5 : 0);
+                const fieldCount = type === 'adminGuru' ? 6 : 5;
                 const values = Array.from({length: fieldCount}, (_, i) => document.getElementById(`field${i+1}`).value);
-                const action = rowIndex ? 'update' : 'create';
-                payload = { action, type, values };
-                if (rowIndex) payload.rowIndex = rowIndex;
+                payload = { action: (rowIndex ? 'update' : 'create'), type, values, rowIndex };
             }
 
             fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
@@ -1706,7 +1614,7 @@
                 .catch(error => showMessage(`Gagal menyimpan: ${error.message}`, 'Error'))
                 .finally(() => {
                     submitButton.disabled = false;
-                    submitButton.innerHTML = '<i class="fas fa-save"></i> Simpan';
+                    submitButton.innerHTML = originalText;
                 });
         });
 
@@ -1738,6 +1646,4 @@
         }
     </script>
 </body>
-
 </html>
-
